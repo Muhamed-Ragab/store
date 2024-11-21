@@ -55,13 +55,10 @@ export default function ProductsCarousel({ title, products }: Props) {
             0: {
               slidesPerView: 1,
             },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
+            448: {
               slidesPerView: 3,
             },
-            1280: {
+            1024: {
               slidesPerView: 4,
             },
             1440: {

@@ -12,7 +12,7 @@ import { RegisterForm } from './components/RegisterForm';
 
 export default function Register() {
   return (
-    <main className="container pt-16">
+    <main className="container flex min-h-[75vh] items-center justify-center pt-16">
       <Card className="mx-auto sm:w-[400px]">
         <CardHeader>
           <CardTitle>Create an account</CardTitle>

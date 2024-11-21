@@ -13,6 +13,8 @@ export default function BrandsSlider() {
             alt={brand}
             width={120}
             height={120}
+            draggable={false}
+            loading="lazy"
             className="h-[120px] w-auto bg-white"
           />
         ))}

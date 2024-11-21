@@ -34,14 +34,22 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         suppressHydrationWarning
       >
         <Providers>
-          <header className="max-lg:hidden">
-            <Navbar />
+          <header className="fixed left-0 top-0 z-40 w-full backdrop-blur-md">
+            <div className="max-lg:hidden">
+              <Navbar />
+            </div>
+            <div className="lg:hidden">
+              <MobileNavbar />
+            </div>
           </header>
-          <header className="lg:hidden">
-            <MobileNavbar />
-          </header>
-          <ScrollProgressLayout>{children}</ScrollProgressLayout>
-          <Footer />
+          <ScrollProgressLayout>
+            <div className="relative min-h-screen py-[68px]">
+              {children}
+              <div className="absolute bottom-0 left-0 w-full">
+                <Footer />
+              </div>
+            </div>
+          </ScrollProgressLayout>
         </Providers>
       </body>
     </html>

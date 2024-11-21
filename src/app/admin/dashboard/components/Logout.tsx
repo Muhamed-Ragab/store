@@ -1,9 +1,9 @@
 'use client';
 
-import { useToast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth.client';
 import { User } from 'better-auth';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 type Props = {
   id: User['id'];
@@ -11,14 +11,10 @@ type Props = {
 
 export function Logout({ id }: Props) {
   const router = useRouter();
-  const { toast } = useToast();
 
   const revokeSession = async () => {
     if (!id) {
-      toast({
-        variant: 'destructive',
-        title: 'User not found',
-      });
+      toast.error('User not found');
       return;
     }
 
@@ -27,14 +23,11 @@ export function Logout({ id }: Props) {
     });
     console.log(result);
     if (result.error) {
-      toast({
-        variant: 'destructive',
-        title: result.error.message,
-      });
+      toast.error(result.error.message);
       return;
     }
 
-    toast({ title: 'Logged out successfully' });
+    toast.success('Logged out successfully');
     router.refresh();
   };
 
