@@ -1,9 +1,9 @@
 'use client';
 
-import { useToast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth.client';
 import { User } from 'better-auth';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 type Props = {
   role?: string;
@@ -12,28 +12,25 @@ type Props = {
 
 export function SelectRole({ role = 'user', users }: Props) {
   const router = useRouter();
-  const { toast } = useToast();
 
   const setRole = async (userId: string, role: string) => {
     const result = await authClient.admin.setRole({ userId, role });
     console.log(result);
 
     if (result.error) {
-      toast({
-        variant: 'destructive',
-        title: result.error.message,
-      });
+      toast.error(result.error.message);
     }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
     const userId = formData.get('userId') as string;
     const selectedRole = formData.get('role') as string;
     await setRole(userId, selectedRole);
-    toast({ title: 'Role set successfully' });
 
+    toast.success('Role set successfully');
     router.refresh();
   };
 
