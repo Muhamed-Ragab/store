@@ -43,7 +43,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             </div>
           </header>
           <ScrollProgressLayout>
-            <div className="relative min-h-screen py-[68px]">
+            <div className="relative min-h-screen py-[80px]">
               {children}
               <div className="absolute bottom-0 left-0 w-full">
                 <Footer />

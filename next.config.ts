@@ -5,6 +5,10 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  experimental: {
+    memoryBasedWorkersCount: true,
+    webpackMemoryOptimizations: true,
+  },
   images: {
     localPatterns: [
       {

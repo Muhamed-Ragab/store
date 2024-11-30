@@ -69,7 +69,7 @@ export default function ProductsCarousel({ title, products }: Props) {
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>
-              <Card className="relative">
+              <Card className="relative mx-auto max-w-72">
                 <CardHeader>
                   <figure className="mx-auto h-[150px] space-y-2 overflow-hidden">
                     <Image
